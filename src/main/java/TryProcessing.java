@@ -15,11 +15,11 @@ public class TryProcessing extends PApplet {
     public static final int HEIGHT_FACTOR_B = 4;
     public static final int HEIGHT_FACTOR_C = 3;
     public static final int HEIGHT_FACTOR_D = 2;
-    private static int positionA=1;
-    private static int positionB=1;
-    private static int positionC=1;
-    private static int positionD=1;
-    
+    private static int POSITION_A =1;
+    private static int POSITION_B =1;
+    private static int POSITION_C =1;
+    private static int POSITION_D =1;
+
     ArrayList<Circle> listOfCircle ;
 
     public static void main(String[] args) {
@@ -36,10 +36,10 @@ public class TryProcessing extends PApplet {
     public void setup() {
         super.setup();
 
-        Circle c1 = new Circle(SPEED_FACTOR_A,DIAMETER,HEIGHT_FACTOR_A,positionA);
-        Circle c2 = new Circle(SPEED_FACTOR_B,DIAMETER,HEIGHT_FACTOR_B,positionB);
-        Circle c3 = new Circle(SPEED_FACTOR_C,DIAMETER,HEIGHT_FACTOR_C,positionC);
-        Circle c4 = new Circle(SPEED_FACTOR_D,DIAMETER,HEIGHT_FACTOR_D,positionD);
+        Circle c1 = new Circle(SPEED_FACTOR_A,DIAMETER,HEIGHT_FACTOR_A, POSITION_A);
+        Circle c2 = new Circle(SPEED_FACTOR_B,DIAMETER,HEIGHT_FACTOR_B, POSITION_B);
+        Circle c3 = new Circle(SPEED_FACTOR_C,DIAMETER,HEIGHT_FACTOR_C, POSITION_C);
+        Circle c4 = new Circle(SPEED_FACTOR_D,DIAMETER,HEIGHT_FACTOR_D, POSITION_D);
 
         listOfCircle = new ArrayList<>(Arrays.asList(c1,c2,c3,c4));
     }
