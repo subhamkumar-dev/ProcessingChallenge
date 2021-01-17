@@ -1,24 +1,19 @@
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class TryProcessing extends PApplet {
-    public static final int WIDTH = 680;
-    public static final int HEIGHT = 480;
-    public static final int DIAMETER = 10;
-    public static final int SPEED_FACTOR_A = 1;
-    public static final int SPEED_FACTOR_D = 4;
-    public static final int SPEED_FACTOR_C = 3;
-    public static final int SPEED_FACTOR_B = 2;
-    public static final int HEIGHT_FACTOR_A = 5;
-    public static final int HEIGHT_FACTOR_B = 4;
-    public static final int HEIGHT_FACTOR_C = 3;
-    public static final int HEIGHT_FACTOR_D = 2;
-    private static int positionA=1;
-    private static int positionB=1;
-    private static int positionC=1;
-    private static int positionD=1;
+    public final int WIDTH = 680;
+    public final int HEIGHT = 480;
+    private final int DIAMETER = 10;
+
+    private ArrayList<Integer> speedFactorList = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+    private ArrayList<Integer> heightFactorList = new ArrayList<>(Arrays.asList(5, 4, 3, 2));
+    private ArrayList<Integer> positionList = new ArrayList<>(Arrays.asList(1, 1, 1, 1));
 
     public static void main(String[] args) {
-        PApplet.main("TryProcessing",args);
+        PApplet.main("TryProcessing", args);
     }
 
     @Override
@@ -34,21 +29,20 @@ public class TryProcessing extends PApplet {
 
     @Override
     public void draw() {
-        PrintCircle(positionA, HEIGHT_FACTOR_A);
-        PrintCircle(positionB, HEIGHT_FACTOR_B);
-        PrintCircle(positionC, HEIGHT_FACTOR_C);
-        PrintCircle(positionD, HEIGHT_FACTOR_D);
-        Speed();
+        int listSize = speedFactorList.size();
+        for (int i = 0; i < listSize; i++) {
+            PrintCircle(positionList.get(i), heightFactorList.get(i));
+            updatePosition(i);
+        }
+
     }
 
-    private void PrintCircle(int position,int heightFactor) {
-        ellipse(position, HEIGHT/heightFactor ,DIAMETER, DIAMETER);
+    private void updatePosition(int i) {
+        positionList.set(i, positionList.get(i) + speedFactorList.get(i));
     }
 
-    private void Speed() {
-        positionA+=SPEED_FACTOR_A;
-        positionB+=SPEED_FACTOR_B;
-        positionC+=SPEED_FACTOR_C;
-        positionD+=SPEED_FACTOR_D;
+    private void PrintCircle(int position, int heightFactor) {
+        ellipse(position, HEIGHT / heightFactor, DIAMETER, DIAMETER);
     }
+
 }
